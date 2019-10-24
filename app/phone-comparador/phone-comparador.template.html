@@ -1,0 +1,74 @@
+<div class="container">
+  <h2>Comparador</h2>
+
+  {{ $ctrl.recibirEventoHijo()}}
+  <div class="row">
+      <div class="col-sm-2">
+        <input  class="form-control" type="text" ng-model="busqueda.name" placeholder="Buscar...">
+        <p>Ram:</p>
+        
+        <input type="radio" name="mRam" ng-click="memMin = 0; memMax = 512"> 0 - 512 Mb<br>
+        <input type="radio" name="mRam" ng-click="memMin = 512; memMax = 1024"> 512 Mb - 1 Gb<br>
+        <input type="radio" name="mRam" ng-click="memMin = 1024; memMax = 2048"> 1 Gb - 2 Gb<br>
+        <input type="radio" name="mRam" ng-click="memMin = 2048; memMax = 4096"> 2 Gb - 4 Gb<br>
+        <input type="radio" name="mRam" ng-click="memMin = 4096; memMax = 35000">4 Gb o más<br>
+          <ul class="list-group">
+              <li ng-repeat="phone in $ctrl.phones | filter: busqueda | rangeFilter:'ram':memMin:memMax" ng-click="$ctrl.seleccionar(phone)" class="list-group-item" ng-class="{'seleccionado' : $ctrl.phone1 == phone || $ctrl.phone2 == phone}">
+                <img ng-src="{{phone.imageUrl}}" class="imagen-responsive" alt="{{phone.name}}">
+                {{phone.name}}
+  
+              </li>
+              
+          </ul>
+      </div>
+  
+      <div class="row">
+
+    <!-- 1º columan -->
+    <div class="col-md-2">   
+      
+      
+        <p>
+            <i class="fas fa-mobile-alt"></i> Buscar Móvil:<input ng-model="$buscar_movil" />
+          </p>
+
+          <p>
+              <i class="fas fa-mobile-alt"></i> Buscar Ram:<input type="number" min="1" ng-model="$buscar_storage.ram" />
+            </p>
+
+            <p>
+                <i class="fas fa-mobile-alt"></i> Buscar Flash:<input type="number" min="1" ng-model="$buscar_storage.flash" />
+              </p>
+
+     
+              
+        <ul class="list-group">
+          <li class="list-group-item" 
+              ng-repeat="phone in $ctrl.phones | filter:$buscar_movil | filter:$buscar_storage.ram |  filter:$buscar_storage.flash "
+              ng-click="$ctrl.selecionar(phone)">
+            <img ng-src="{{phone.imageUrl}}" class="responsive"/>
+            {{phone.name}}
+            {{phone.buscar_storage.ram}}
+            {{phone.buscar_storage.flash}}
+          </li>          
+        </ul>
+        
+    </div>
+
+    <!-- 2º columan -->
+    <div class="col-md-5">
+      <phone-comparador-detalle mostrar="$ctrl.phone1" comparar="$ctrl.phone2"></phone-comparador-detalle>   
+    </div>
+
+    <!-- 3º columan -->
+    <div class="col-md-5">      
+      <phone-comparador-detalle mostrar="$ctrl.phone2" comparar="$ctrl.phone1"></phone-comparador-detalle>            
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+
+
+
+</div>

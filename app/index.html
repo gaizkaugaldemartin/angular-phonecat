@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="app.animations.css" />
+     <!-- fontawesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">    
 
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/angular/angular.js"></script>
@@ -16,6 +18,8 @@
     <script src="app.config.js"></script>
     <script src="app.animations.js"></script>
     <script src="core/core.module.js"></script>
+    <script src="core/directiva.compare.js"></script>
+    <script src="core/comprar/service.comprar.js"></script>
     <script src="core/checkmark/checkmark.filter.js"></script>
     <script src="core/phone/phone.module.js"></script>
     <script src="core/phone/phone.service.js"></script>
@@ -23,8 +27,22 @@
     <script src="phone-list/phone-list.component.js"></script>
     <script src="phone-detail/phone-detail.module.js"></script>
     <script src="phone-detail/phone-detail.component.js"></script>
+    <script src="phone-comparador/phone-comparador.module.js"></script>
+    <script src="phone-comparador/phone-comparador.component.js"></script>
+    
+    <script src="components/menu/componente.menu.js"></script>
   </head>
   <body>
+    
+    <nav>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a ng-href="#!/phones"> <i class="fas fa-home"></i> Inicio</a></li>
+            <li role="presentation"><a ng-href="#!/comparador">  <i class="fas fa-exchange-alt"></i> Comparador</a></li>
+            <li role="presentation"><a ng-href="#!/nuevo">  <i class="fas fa-mobile-alt"></i> Nuevo Móvil</a></li>
+            <li role="presentation"><a ng-href="#!/carritocompra">  <i class="fas fa-cart-plus"></i> Carrito compra</a></li>
+          </ul>
+  
+    </nav>
 
     <div class="view-container">
       <div ng-view class="view-frame"></div>
