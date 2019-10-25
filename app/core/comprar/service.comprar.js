@@ -1,14 +1,20 @@
 'use strict';
-  core.factory('compraMovil',
+
+angular.
+  module('core').
+  factory('compraMovil',
     function() {
 
       return {
-        producto: null,
-        getProducto: function() {
-            return this.producto;
+        productos: [],
+        getProductos: function() {
+            return this.productos;
         },
         setProducto: function(p) {
-            this.producto = p;
+            this.productos.push(p);
+        },
+        removeProducto: function(p){
+            this.productos.splice(this.productos.indexOf(p),1);
         }
 
       }; //end return
